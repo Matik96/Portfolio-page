@@ -1,16 +1,18 @@
 <!DOCTYPE html>
+
+
 <html>
-<head>
+<head >
 	<title>Portfolio website</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
  
- <script src="https://kit.fontawesome.com/f8f44d26fb.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/f8f44d26fb.js" crossorigin="anonymous"></script>
  
  
 </head>
-<body>
+<body onload="checkCookie()">
 	<!----hero Section start---->
 
 	<div class="hero">
@@ -20,10 +22,11 @@
 				<li><a href="#">Home</a></li>
 				<li><a href="#about_me">About Me</a></li>
 				<li><a href="#service">Service</a></li>
-				<li><a href="#">Skills</a></li>
-				<li><a href="#">Contact me</a></li>
+				<li><a href="#contact_me">Contact me</a></li>
 			</ul>
-			<a href="#" class="btn">Subscribe</a>
+			<a href="info/cv_mkow.pdf" download ="CV_Mateusz_Kowalski" target="_blank" class="btn">Download CV</a>
+			
+
 		</nav>
 
 		<div class="content">
@@ -31,10 +34,10 @@
 			<h1>Mateusz <span>Kowalski</span></h1>
 			<h3>I am a Java Developer  
 			<img src="img/java1.gif" style="width:50px">
-			<i class="fab fa-java" style="font-size:50px"></i>
+			
 			</h3>
 			<div class="newslatter">
-				<form>
+				<form onsubmit="download('newsletter.txt', this['email'].value)"> 
 					<input type="email" name="email" id="mail" placeholder="Enter Your Email">
 					<input type="submit" name="submit" value="Lets Start">
 				</form>
@@ -42,18 +45,33 @@
 		</div>
 	</div>
 
+
+
 	<!----About section start---->
 	<section class="about" id = "about_me">
 		<div class="main" >
-			<img src="img/main-img.png">
+			<img src="img/backend.jpg">
 			<div class="about-text">
 				<h2>About Me</h2>
 				<h5>Java <span> Developer</span></h5>
-				<p>I am a backend java developer. </p>
-				<button type="button">Let's Talk</button>
+				<p>I am a backend java developer. I am working with Java since 2019.
+				I graduated from Warsaw Military University of Technology in 2019 with an engineer degree. Currently, I am studying for a Master's degree at the Warsaw University of Technology. At the same time, I work in a company that provides banking applications to many foreign companies. 
+				My key skills: 
+				<ul>
+					<li>Java 8/11</li>
+					<li>Spring</li>
+					<li>Hibernate</li>
+					<li>Oracle databases</li>
+					<li>SQL</li>
+					<li>HTML/CSS</li>
+
+				</ul>
+				</p>
+				<a class="btn" href="#contact_me" >Let's Talk</a>
 			</div>
 		</div>
 	</section>
+
 
 	<!-----service section start----------->
 	<div class="service" id ="service">
@@ -62,12 +80,12 @@
 		</div>
 
 		<div class="box">
-			<div class="card">
-				<i class="fas fa-bars"></i>
-				<h5>Web Development</h5>
+			<div class="card" id="read">
+				<i class="fa-solid fa-database"></i>
+				<h5>Database Creation</h5>
 				<div class="pra">
-					<p>Every website should be built with two primary goals: Firstly, it needs to work across all devices. Secondly, it needs to be fast as possible.</p>
-
+					<p>Every application shoud have a database where the date can be stored. I have expirience with rational and non-rational databases.</p>
+					<p></p>
 					<p style="text-align: center;">
 						<a class="button" href="#">Read More</a>
 					</p>
@@ -88,10 +106,9 @@
 
 			<div class="card">
 				<i class="far fa-bell"></i>
-				<h5>Web Development</h5>
+				<h5>Web Services</h5>
 				<div class="pra">
-					<p>Every website should be built with two primary goals: Firstly, it needs to work across all devices. Secondly, it needs to be fast as possible.</p>
-
+					<p>After creation a web page it's need to be comunicated with databases and many server operation. I can create a very efficient services.</p>
 					<p style="text-align: center;">
 						<a class="button" href="#">Read More</a>
 					</p>
@@ -100,22 +117,109 @@
 		</div>
 	</div>
 
+
 	<!------Contact Me------>
 	<div class="contact-me" id ="contact_me">
+		<h2>Contact form </h2>
 		<p>Let Me Get You A Beautiful Website.</p>
-		<a class="button-two" href="#">Hire Me</a>
+		
+		 <form class="cf">
+			<div class="half left cf">
+				<input type="text" id="input-name" placeholder="Name">
+				<input type="email" id="input-email" placeholder="Email address">
+				<input type="text" id="input-subject" placeholder="Subject">
+			</div>
+			<div class="half right cf">
+				<textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+			</div>  
+			<input class="btn" type="submit" value="Submit" style="width:30px; position: relative" >
+		</form>
+		
 	</div>
 
+
 	<!------footer start--------->
-	<footer>
+	<footer >
 		<p>Mateusz Kowalski</p>
 		<p>For more my content please go to my sites: </p>
 		<div class="social">
-			<a href="#"><i class="fab fa-facebook-f"></i></a>
-			<a href="#"><i class="fab fa-instagram"></i></a>
-			<a href="#"><i class="fa-brands fa-github"></i></a>
+			<a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+			<a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+			<a href="https://github.com/Matik96" target="_blank"><i class="fa-brands fa-github"></i></a>
 		</div>
 		<p class="end">CopyRight By Mateusz Kowalski</p>
 	</footer>
 </body>
 </html>
+
+<script>
+$('#read').readmore({
+  speed: 75,
+  maxHeight: 100
+});
+</script>
+
+<script>
+
+
+function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+
+  encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+
+
+function writeTextFile(filepath, output) {
+	var mainExFlData = new File(filepath);
+	mainExFlData.open("w"); //
+	mainExFlData.writeln(output);
+	mainExFlData.close();
+}
+
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  let user = getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
+
+</script>
+
